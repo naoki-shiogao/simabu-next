@@ -6,7 +6,7 @@ import { Headline } from "@/src/components/Headline";
 import { Headerlogo } from "@/src/components/Headerlogo";
 import { Header } from "@/src/components/Header/Header";
 import { Logo } from "@/src/components/logo/logo";
-import { useCallback } from "react";
+import { useCallback, useEffect } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -18,6 +18,16 @@ export default function Home() {
     e.preventDefault();
     alert(foo);
   }, []);
+
+  useEffect(() => {
+    console.log("マウント時");
+    document.body.style.backgroundColor = "lightblue";
+    return () => {
+      console.log("アンマウント時");
+      document.body.style.backgroundColor = "";
+    };
+  }, []);
+
   return (
     <>
       <Head>
