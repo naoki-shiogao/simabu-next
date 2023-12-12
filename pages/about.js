@@ -5,6 +5,7 @@ import { Footer } from "@/components/Footer";
 import { Logo } from "@/components/logo";
 import { Headline } from "@/components/Headline";
 import { Headerlogo } from "@/components/Headerlogo";
+import { Header } from "@/components/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,6 +23,7 @@ export default function Home() {
           <Headline title="About page">
             <code className={styles.code}>about</code>
           </Headline>
+          <Header />
           <Headerlogo />
         </div>
         <Logo />

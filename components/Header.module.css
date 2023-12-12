@@ -1,0 +1,8 @@
+.header {
+  display: flex;
+  column-gap: 60px;
+  justify-content: center;
+  border-bottom: 1px solid #eaeaea;
+  width: 30%;
+  padding: 20px 0;
+}
