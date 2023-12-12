@@ -6,10 +6,18 @@ import { Headline } from "@/src/components/Headline";
 import { Headerlogo } from "@/src/components/Headerlogo";
 import { Header } from "@/src/components/Header/Header";
 import { Logo } from "@/src/components/logo/logo";
+import { useCallback } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
+  const foo = 1;
+
+  const handleClick = useCallback((e) => {
+    console.log(e.target.href);
+    e.preventDefault();
+    alert(foo);
+  }, []);
   return (
     <>
       <Head>
@@ -23,6 +31,9 @@ export default function Home() {
             <code className={styles.code}>index</code>
           </Headline>
           <Header />
+          <a href="/about" onClick={handleClick}>
+            ボタン
+          </a>
           <Headerlogo />
         </div>
         <Logo />
