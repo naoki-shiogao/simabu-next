@@ -6,25 +6,22 @@ import { Headline } from "@/src/components/Headline";
 import { Headerlogo } from "@/src/components/Headerlogo";
 import { Header } from "@/src/components/Header/Header";
 import { Logo } from "@/src/components/logo/logo";
-import { useCallback, useEffect } from "react";
-import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const foo = 1;
+  const [foo, setFoo] = useState(1);
 
-  const handleClick = useCallback((e) => {
-    console.log(e.target.href);
-    e.preventDefault();
-    alert(foo);
-  }, []);
+  const handleClick = (e) => {
+    setFoo((foo) => foo + 1);
+    setFoo((foo) => foo + 1);
+    // foo = foo + 1;
+  };
 
   useEffect(() => {
-    console.log("マウント時");
     document.body.style.backgroundColor = "lightblue";
     return () => {
-      console.log("アンマウント時");
       document.body.style.backgroundColor = "";
     };
   }, []);
@@ -42,9 +39,10 @@ export default function Home() {
             <code className={styles.code}>index</code>
           </Headline>
           <Header />
-          <Link href="/about" onClick={handleClick}>
+          <h1>{foo}</h1>
+          <button href="/about" onClick={handleClick}>
             ボタン
-          </Link>
+          </button>
           <Headerlogo />
         </div>
         <Logo />
