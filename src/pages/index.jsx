@@ -7,6 +7,7 @@ import { Headerlogo } from "@/src/components/Headerlogo";
 import { Header } from "@/src/components/Header/Header";
 import { Logo } from "@/src/components/logo/logo";
 import { useCallback, useEffect } from "react";
+import Link from "next/link";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -41,9 +42,9 @@ export default function Home() {
             <code className={styles.code}>index</code>
           </Headline>
           <Header />
-          <a href="/about" onClick={handleClick}>
+          <Link href="/about" onClick={handleClick}>
             ボタン
-          </a>
+          </Link>
           <Headerlogo />
         </div>
         <Logo />
