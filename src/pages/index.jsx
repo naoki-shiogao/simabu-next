@@ -6,18 +6,18 @@ import { Headline } from "@/src/components/Headline";
 import { Headerlogo } from "@/src/components/Headerlogo";
 import { Header } from "@/src/components/Header/Header";
 import { Logo } from "@/src/components/logo/logo";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [foo, setFoo] = useState(1);
 
-  const handleClick = (e) => {
-    setFoo((foo) => foo + 1);
-    setFoo((foo) => foo + 1);
-    // foo = foo + 1;
-  };
+  const handleClick = useCallback(() => {
+    if (foo < 10) {
+      setFoo((foo) => foo + 1);
+    }
+  }, [foo]);
 
   useEffect(() => {
     document.body.style.backgroundColor = "lightblue";
