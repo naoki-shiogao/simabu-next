@@ -12,12 +12,26 @@ const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const [foo, setFoo] = useState(1);
+  const [text, setText] = useState("");
+  const [isShow, setIsShow] = useState(true);
 
   const handleClick = useCallback(() => {
     if (foo < 10) {
       setFoo((foo) => foo + 1);
     }
   }, [foo]);
+
+  const handleChange = useCallback((e) => {
+    if (e.target.value.length > 5) {
+      alert("5文字以内にしてください");
+      return;
+    }
+    setText(e.target.value.trim());
+  }, []);
+
+  const handleDisplay = useCallback(() => {
+    setIsShow((isShow) => !isShow);
+  }, []);
 
   useEffect(() => {
     document.body.style.backgroundColor = "lightblue";
@@ -39,10 +53,12 @@ export default function Home() {
             <code className={styles.code}>index</code>
           </Headline>
           <Header />
-          <h1>{foo}</h1>
+          {isShow ? <h1>{foo}</h1> : null}
           <button href="/about" onClick={handleClick}>
             ボタン
           </button>
+          <button onClick={handleDisplay}>{isShow ? "非表示" : "表示"}</button>
+          <input type="text" value={text} onChange={handleChange} />
           <Headerlogo />
         </div>
         <Logo />
