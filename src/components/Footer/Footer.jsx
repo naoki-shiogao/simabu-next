@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import styles from "./Footer.module.css";
+import { useCallback, useState } from "react";
 
 const ITEMS = [
   {
@@ -30,9 +31,17 @@ const ITEMS = [
 const inter = Inter({ subsets: ["latin"] });
 
 export function Footer() {
+  const [items, setItems] = useState(ITEMS);
+  const handleReduce = useCallback(() => {
+    setItems((prevItems) => {
+      return prevItems.slice(0, prevItems.length - 1);
+    });
+  }, []);
+
   return (
     <div className={styles.grid}>
-      {ITEMS.map((item) => {
+      <button onClick={handleReduce}>減らす</button>
+      {items.map((item) => {
         return (
           <a
             key={item.href}
