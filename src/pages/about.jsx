@@ -6,17 +6,19 @@ import { Logo } from "@/src/components/logo/logo";
 import { Headline } from "@/src/components/Headline";
 import { HeaderLogo } from "@/src/components/HeaderLogo";
 import { Header } from "@/src/components/Header/Header";
-import { useCounter } from "@/src/hooks/useCounter";
-import { useInputArray } from "@/src/hooks/useInputArray";
-import { useBgLiteBlue } from "@/src/hooks/useBgLiteBlue";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export default function About() {
-  const { foo, isShow, handleClick, handleDisplay } = useCounter();
-  const { text, array, handleChange, handleAdd } = useInputArray();
-  useBgLiteBlue();
-
+export default function About({
+  foo,
+  isShow,
+  handleClick,
+  handleDisplay,
+  text,
+  array,
+  handleChange,
+  handleAdd,
+}) {
   return (
     <>
       <Head>
