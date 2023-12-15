@@ -6,50 +6,16 @@ import { Headline } from "@/src/components/Headline";
 import { HeaderLogo } from "@/src/components/HeaderLogo";
 import { Header } from "@/src/components/Header/Header";
 import { Logo } from "@/src/components/logo/logo";
-import { useCallback, useEffect, useState } from "react";
+import { useCounter } from "@/src/hooks/useCounter";
+import { useInputArray } from "@/src/hooks/useInputArray";
+import { useBgLiteBlue } from "@/src/hooks/useBgLiteBlue";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
-  const [foo, setFoo] = useState(1);
-  const [text, setText] = useState("");
-  const [isShow, setIsShow] = useState(true);
-  const [array, setArray] = useState([]);
-
-  const handleClick = useCallback(() => {
-    if (foo < 10) {
-      setFoo((foo) => foo + 1);
-    }
-  }, [foo]);
-
-  const handleChange = useCallback((e) => {
-    if (e.target.value.length > 5) {
-      alert("5文字以内にしてください");
-      return;
-    }
-    setText(e.target.value.trim());
-  }, []);
-
-  const handleDisplay = useCallback(() => {
-    setIsShow((isShow) => !isShow);
-  }, []);
-
-  const handleAdd = useCallback(() => {
-    setArray((prevArray) => {
-      if (prevArray.some((item) => item === text)) {
-        alert("同じ要素が既に存在します");
-        return prevArray;
-      }
-      return [...prevArray, text];
-    });
-  }, [text]);
-
-  useEffect(() => {
-    document.body.style.backgroundColor = "lightblue";
-    return () => {
-      document.body.style.backgroundColor = "";
-    };
-  }, []);
+  const { foo, isShow, handleClick, handleDisplay } = useCounter();
+  const { text, array, handleChange, handleAdd } = useInputArray();
+  useBgLiteBlue();
 
   return (
     <>
@@ -64,15 +30,17 @@ export default function Home() {
             <code className={styles.code}>index</code>
           </Headline>
           <Header />
+
           {isShow ? <h1>{foo}</h1> : null}
           <button href="/about" onClick={handleClick}>
             ボタン
           </button>
           <button onClick={handleDisplay}>{isShow ? "非表示" : "表示"}</button>
-          <input type="text" value={text} onChange={handleChange} />
+
           <HeaderLogo />
         </div>
         <Logo />
+        <input type="text" value={text} onChange={handleChange} />
         <button onClick={handleAdd}>追加</button>
         <ul>
           {array.map((item) => {
