@@ -4,7 +4,7 @@ import styles from "@/src/styles/Home.module.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export function Headerlogo() {
+export function HeaderLogo() {
   return (
     <div>
       <a

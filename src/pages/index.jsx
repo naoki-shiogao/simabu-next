@@ -3,7 +3,7 @@ import { Inter } from "next/font/google";
 import styles from "@/src/styles/Home.module.css";
 import { Footer } from "@/src/components/Footer/Footer";
 import { Headline } from "@/src/components/Headline";
-import { Headerlogo } from "@/src/components/Headerlogo";
+import { HeaderLogo } from "@/src/components/HeaderLogo";
 import { Header } from "@/src/components/Header/Header";
 import { Logo } from "@/src/components/logo/logo";
 import { useCallback, useEffect, useState } from "react";
@@ -14,6 +14,7 @@ export default function Home() {
   const [foo, setFoo] = useState(1);
   const [text, setText] = useState("");
   const [isShow, setIsShow] = useState(true);
+  const [array, setArray] = useState([]);
 
   const handleClick = useCallback(() => {
     if (foo < 10) {
@@ -32,6 +33,16 @@ export default function Home() {
   const handleDisplay = useCallback(() => {
     setIsShow((isShow) => !isShow);
   }, []);
+
+  const handleAdd = useCallback(() => {
+    setArray((prevArray) => {
+      if (prevArray.some((item) => item === text)) {
+        alert("同じ要素が既に存在します");
+        return prevArray;
+      }
+      return [...prevArray, text];
+    });
+  }, [text]);
 
   useEffect(() => {
     document.body.style.backgroundColor = "lightblue";
@@ -59,9 +70,15 @@ export default function Home() {
           </button>
           <button onClick={handleDisplay}>{isShow ? "非表示" : "表示"}</button>
           <input type="text" value={text} onChange={handleChange} />
-          <Headerlogo />
+          <HeaderLogo />
         </div>
         <Logo />
+        <button onClick={handleAdd}>追加</button>
+        <ul>
+          {array.map((item) => {
+            return <li key={item}>{item}</li>;
+          })}
+        </ul>
 
         <Footer />
       </main>
