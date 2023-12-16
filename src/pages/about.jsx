@@ -10,7 +10,7 @@ import { Header } from "@/src/components/Header/Header";
 const inter = Inter({ subsets: ["latin"] });
 
 export default function About({
-  foo,
+  doubleCounter,
   isShow,
   handleClick,
   handleDisplay,
@@ -33,7 +33,7 @@ export default function About({
           </Headline>
           <Header />
 
-          {isShow ? <h1>{foo}</h1> : null}
+          {isShow ? <h1>{doubleCounter}</h1> : null}
           <button href="/about" onClick={handleClick}>
             ボタン
           </button>
