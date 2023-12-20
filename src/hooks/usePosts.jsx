@@ -1,7 +1,6 @@
 import useSWR from "swr";
 
 const fetcher = async (url) => {
-  fetch(url).then((r) => r.json());
   const response = await fetch(url);
 
   if (!response.ok) {
@@ -14,7 +13,7 @@ const fetcher = async (url) => {
 
 export const usePosts = () => {
   const { data, error } = useSWR(
-    "https://jsonplaceholder.typicode.com/posts",
+    "https://jsonplaceholder.typicode.com/posts?",
     fetcher
   );
   return {
