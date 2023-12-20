@@ -1,29 +1,13 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import styles from "@/src/styles/Home.module.css";
-import { Footer } from "@/src/components/Footer/Footer";
 import { Headline } from "@/src/components/Headline";
-import { HeaderLogo } from "@/src/components/HeaderLogo";
 import { Header } from "@/src/components/Header/Header";
-import { Logo } from "@/src/components/logo/logo";
-import { useCallback, useEffect, useState } from "react";
+import { Posts } from "@/src/components/Posts";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const Home = (props) => {
-  const [posts, setPosts] = useState([]);
-
-  const getPosts = useCallback(async () => {
-    const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-    const json = await res.json();
-    setPosts(json);
-  }, []);
-
-  useEffect(() => {
-    getPosts();
-  }, [getPosts]);
-
-  console.log(posts);
+const Home = () => {
   return (
     <>
       <Head>
@@ -38,14 +22,7 @@ const Home = (props) => {
           </Headline>
           <Header />
         </div>
-        {posts.length > 0 ? (
-          <ol>
-            {posts.map((post) => {
-              return <li key={post.id}>{post.title}</li>;
-            })}
-          </ol>
-        ) : null}
-        ;
+        <Posts />
       </main>
     </>
   );
