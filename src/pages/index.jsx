@@ -6,10 +6,24 @@ import { Headline } from "@/src/components/Headline";
 import { HeaderLogo } from "@/src/components/HeaderLogo";
 import { Header } from "@/src/components/Header/Header";
 import { Logo } from "@/src/components/logo/logo";
+import { useCallback, useEffect, useState } from "react";
 
 const inter = Inter({ subsets: ["latin"] });
 
 const Home = (props) => {
+  const [posts, setPosts] = useState([]);
+
+  const getPosts = useCallback(async () => {
+    const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+    const json = await res.json();
+    setPosts(json);
+  }, []);
+
+  useEffect(() => {
+    getPosts();
+  }, [getPosts]);
+
+  console.log(posts);
   return (
     <>
       <Head>
@@ -23,27 +37,15 @@ const Home = (props) => {
             <code className={styles.code}>index</code>
           </Headline>
           <Header />
-
-          {props.isShow ? <h1>{props.foo}</h1> : null}
-          <button href="/about" onClick={props.handleClick}>
-            ボタン
-          </button>
-          <button onClick={props.handleDisplay}>
-            {props.isShow ? "非表示" : "表示"}
-          </button>
-
-          <HeaderLogo />
         </div>
-        <Logo />
-        <input type="text" value={props.text} onChange={props.handleChange} />
-        <button onClick={props.handleAdd}>追加</button>
-        <ul>
-          {props.array.map((item) => {
-            return <li key={item}>{item}</li>;
-          })}
-        </ul>
-
-        <Footer />
+        {posts.length > 0 ? (
+          <ol>
+            {posts.map((post) => {
+              return <li key={post.id}>{post.title}</li>;
+            })}
+          </ol>
+        ) : null}
+        ;
       </main>
     </>
   );
