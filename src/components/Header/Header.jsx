@@ -4,8 +4,8 @@ import style from "./Header.module.css";
 export function Header() {
   return (
     <header className={style.header}>
+      <Link href="/">Index</Link>
       <Link href="/posts">Posts</Link>
-      <Link href="/about">About</Link>
     </header>
   );
 }

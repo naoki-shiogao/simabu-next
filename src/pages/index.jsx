@@ -1,15 +1,11 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import styles from "@/src/styles/Home.module.css";
-import { Footer } from "@/src/components/Footer/Footer";
-import { Logo } from "@/src/components/logo/logo";
-import { Headline } from "@/src/components/Headline";
-import { HeaderLogo } from "@/src/components/HeaderLogo";
 import { Header } from "@/src/components/Header/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
-const About = (props) => {
+const Index = () => {
   return (
     <>
       <Head>
@@ -19,34 +15,13 @@ const About = (props) => {
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
         <div className={styles.description}>
-          <Headline title="About page">
-            <code className={styles.code}>about</code>
-          </Headline>
           <Header />
-
-          {props.isShow ? <h1>{props.doubleCounter}</h1> : null}
-          <button href="/about" onClick={props.handleClick}>
-            ボタン
-          </button>
-          <button onClick={props.handleDisplay}>
-            {props.isShow ? "非表示" : "表示"}
-          </button>
-
-          <HeaderLogo />
         </div>
-        <Logo />
-        <input type="text" value={props.text} onChange={props.handleChange} />
-        <button onClick={props.handleAdd}>追加</button>
-        <ul>
-          {props.array.map((item) => {
-            return <li key={item}>{item}</li>;
-          })}
-        </ul>
-
-        <Footer />
+        <h1>Next.jsで学ぶReact講座</h1>
+        <p>JSONPlaceholderのAPIを色々叩いてみるよ！</p>
       </main>
     </>
   );
 };
 
-export default About;
+export default Index;

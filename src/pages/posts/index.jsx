@@ -17,9 +17,6 @@ const Home = () => {
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
         <div className={styles.description}>
-          <Headline title="Index page!!">
-            <code className={styles.code}>index</code>
-          </Headline>
           <Header />
         </div>
         <Posts />
