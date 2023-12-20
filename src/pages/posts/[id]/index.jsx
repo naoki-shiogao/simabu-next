@@ -1,7 +1,6 @@
 import Head from "next/head";
 import { Inter } from "next/font/google";
 import styles from "@/src/styles/Home.module.css";
-import { Headline } from "@/src/components/Headline";
 import { Header } from "@/src/components/Header/Header";
 import { Post } from "@/src/components/Post";
 
@@ -16,9 +15,6 @@ const PostId = () => {
       </Head>
       <main className={`${styles.main} ${inter.className}`}>
         <div className={styles.description}>
-          <Headline title="Index page!!">
-            <code className={styles.code}>index</code>
-          </Headline>
           <Header />
         </div>
         <Post />

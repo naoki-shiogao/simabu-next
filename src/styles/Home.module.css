@@ -13,7 +13,8 @@
   align-items: inherit;
   font-size: 0.85rem;
   max-width: var(--max-width);
-  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
   z-index: 2;
   font-family: var(--font-mono);
 }
@@ -27,6 +28,7 @@
 
 .description p {
   position: relative;
+
   margin: 0;
   padding: 1rem;
   background-color: rgba(var(--callout-rgb), 0.5);
