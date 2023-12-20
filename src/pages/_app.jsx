@@ -1,3 +1,4 @@
+import { Layout } from "@/src/components/Layout";
 import "@/src/styles/globals.css";
 import Head from "next/head";
 
@@ -7,7 +8,9 @@ const App = ({ Component, pageProps }) => {
       <Head>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
     </>
   );
 };
