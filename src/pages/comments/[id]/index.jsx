@@ -1,21 +1,12 @@
-import Head from "next/head";
 import styles from "@/src/styles/Home.module.css";
 import { Header } from "@/src/components/Header/Header";
-import useSWR from "swr";
-import { fetcher } from "@/src/utils/fetcher";
-import { useRouter } from "next/router";
+
+import { useComment } from "@/src/hooks/useComment";
 
 const Comment = () => {
-  const router = useRouter();
-  const { data: comment, error } = useSWR(
-    router.query.id &&
-      `https://jsonplaceholder.typicode.com/comments/${router.query.id}
-    `,
-    fetcher
-  );
-  console.log(router);
+  const { data, error, isLoading } = useComment();
 
-  if (!error && !comment) {
+  if (isLoading) {
     return <div>ローディング中</div>;
   }
 
@@ -28,11 +19,11 @@ const Comment = () => {
       <div className={styles.description}>
         <Header />
       </div>
-      <lu>
-        <li>{comment.name}</li>
-        <li>{comment.email}</li>
-        <li>{comment.body}</li>
-      </lu>
+      <ul>
+        <li>{data.name}</li>
+        <li>{data.email}</li>
+        <li>{data.body}</li>
+      </ul>
     </>
   );
 };

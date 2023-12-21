@@ -16,11 +16,11 @@ export const Post = () => {
     <>
       <div>
         <Head>
-          <title>{post?.title}</title>
+          <title>{post.title}</title>
         </Head>
-        <h1>{post?.title}</h1>
-        <p>{post?.body}</p>
-        {user?.name ? <div>Created by {user.name}</div> : null}
+        <h1>{post.title}</h1>
+        <p>{post.body}</p>
+        {user.name ? <div>Created by {user.name}</div> : null}
       </div>
     </>
   );
