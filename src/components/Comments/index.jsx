@@ -1,9 +1,9 @@
 import ListItem from "@/src/components/ListItem";
 import { fetcher } from "@/src/utils/fetcher";
-import useSWR from "swr";
+import useSWRImmutable from "swr/immutable";
 
 export const CommentComponent = () => {
-  const { data: comments, error } = useSWR(
+  const { data: comments, error } = useSWRImmutable(
     "https://jsonplaceholder.typicode.com/comments",
     fetcher
   );
