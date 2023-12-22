@@ -1,4 +1,3 @@
-import styles from "@/src/styles/Home.module.css";
 import { Header } from "@/src/components/Header/Header";
 
 import { useComment } from "@/src/hooks/useComment";
@@ -17,16 +16,18 @@ const Comment = () => {
 
   return (
     <>
-      <div className={styles.description}>
+      <div>
         <Header />
       </div>
-      <ul>
-        <li>{data.name}</li>
-        <li>{data.email}</li>
-        <li>{data.body}</li>
-      </ul>
-      <h2>元の記事</h2>
-      <PostByCommentId id={data.postId} />
+      <div className="text-center p-24">
+        <ul>
+          <li>{data.name}</li>
+          <li>{data.email}</li>
+          <li>{data.body}</li>
+        </ul>
+        <h2>元の記事</h2>
+        <PostByCommentId id={data.postId} />
+      </div>
     </>
   );
 };

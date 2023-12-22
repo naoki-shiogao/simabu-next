@@ -14,15 +14,15 @@ export const User = () => {
 
   return (
     <>
-      <div>
-        <h1>{data.name}</h1>
-        <h2>詳細</h2>
-        <ul>
-          <li>{data.email}</li>
-          <li>{data.username}</li>
-          <li>{data.phone}</li>
+      <div className="max-w-96 mx-auto">
+        <h1 className="font-bold text-3xl">{data.name}</h1>
+        <h2 className="text-xl font-bold mt-10">詳細</h2>
+        <ul className="list-inside list-disc mt-2 text-xl">
+          <li>メール: {data.email}</li>
+          <li>アカウント名: {data.username}</li>
+          <li>電話番号: {data.phone}</li>
         </ul>
-        <h2>投稿</h2>
+        <h2 className="text-xl font-bold mt-10">投稿</h2>
         <PostsByUserId id={data.id} />
       </div>
     </>

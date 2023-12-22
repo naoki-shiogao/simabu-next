@@ -21,7 +21,9 @@ export const PostsByUserId = (props) => {
       <ol>
         {data.map((item) => (
           <li key={item.id}>
-            <Link href="/">{item.title}</Link>
+            <Link href="/" className="hover:text-blue-300">
+              {item.title}
+            </Link>
           </li>
         ))}
       </ol>

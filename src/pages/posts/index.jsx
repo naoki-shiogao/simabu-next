@@ -11,8 +11,9 @@ const Posts = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <Header />
-
-      <PostsComponent />
+      <div className="p-24 mx-auto max-w-[1200px] ">
+        <PostsComponent />
+      </div>
     </>
   );
 };

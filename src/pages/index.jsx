@@ -14,8 +14,12 @@ const Index = () => {
       </Head>
 
       <Header />
-      <h1>Next.jsで学ぶReact講座</h1>
-      <p>JSONPlaceholderのAPIを色々叩いてみるよ！</p>
+      <h1 className="flex justify-center py-24 text-3xl">
+        Next.jsで学ぶReact講座
+      </h1>
+      <p className="flex justify-center py-24 text-2xl">
+        JSONPlaceholderのAPIを色々叩いてみるよ！
+      </p>
     </>
   );
 };

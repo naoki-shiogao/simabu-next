@@ -5,13 +5,21 @@ const ListItem = (props) => {
 
   return (
     <>
-      <ol>
-        {datum.map((data) => (
-          <li key={data.id}>
-            <Link href={`${pathName}/${data.id}`}>{data.name}</Link>
-          </li>
-        ))}
-      </ol>
+      <div className="p-24 mx-auto max-w-[600px]">
+        <ul>
+          {datum.map((data) => (
+            <li key={data.id}>
+              <Link
+                href={`${pathName}/${data.id}`}
+                className="hover:text-blue-300"
+              >
+                <h1 className="font-bold">{data.name}</h1>
+                <div className="text-sm">{data.email}</div>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </>
   );
 };
