@@ -1,18 +1,13 @@
 import { CommentsByPostsId } from "@/src/components/Comments/CommentsByPostId";
 import { UserByUserId } from "@/src/components/User/UserByUserId";
-import { fetcher } from "@/src/utils/fetcher";
+import { usePost } from "@/src/hooks/usePost";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import useSWR from "swr";
 
 export const Post = () => {
   const router = useRouter();
-  const { data, error, isLoading } = useSWR(
-    router.query.id
-      ? `https://jsonplaceholder.typicode.com/posts/${router.query.id}`
-      : null,
-    fetcher
-  );
+  const { data, error, isLoading } = usePost(router.query.id);
+
   if (isLoading) {
     return <div>ローディング中</div>;
   }
